@@ -1,0 +1,10 @@
+extends layout
+
+block content
+  h1= title
+  -var results = [`pizza_type`, `toppings`, `price`]
+  div(class="container-fluid")
+    div(class="row")
+      each item,index in results
+        div(class="col-sm-2") Object #{index+1}: #{item}
+
