@@ -1,7 +1,14 @@
 var Pizza = require('../models/pizza');
 
-exports.pizza_list = function(req,res){
-    res.send('NOT IMPLEMENTED: Pizza list');
+exports.pizza_list = async function(req,res){
+    try{
+        thePizzas = await Pizza.find();
+        res.send(thePizzas);
+    }
+    catch(err){
+        res.status(500);
+        res.send(`{"error":${err}}`);
+    }
 };
 
 exports.pizza_detail = function(req,res){
