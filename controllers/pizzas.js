@@ -16,8 +16,21 @@ exports.pizza_detail = function(req,res){
     res.send('NOT IMPLEMENTED: Pizza detail: ' + req.params.id);
 };
 
-exports.pizza_create_post = function(req,res){
-    res.send('NOT IMPLEMENTED: Pizza create POST');
+exports.pizza_create_post = async function(req,res){
+    console.log(req.body)
+    let document = new Pizza();
+    document.pizza_type = req.body.pizza_type;
+    document.toppings = req.body.toppings;
+    document.price = req.body.price;
+    try{
+        let result = await document.save();
+        res.send(result);
+    }
+    catch(err){
+        res.status(500);
+        res.send(`{"error":${err}}`);
+    }
+    
 };
 
 exports.pizza_delete = function(req,res){
