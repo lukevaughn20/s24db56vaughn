@@ -20,7 +20,7 @@ exports.pizza_detail = async function(req,res){
     }catch(error)
     {
         res.status(500);
-        res.send(`{"error":document for id ${req.params.id}not found`);
+        res.send(`{"error":document for id ${req.params.id} not found`);
     }
 };
 
@@ -45,8 +45,23 @@ exports.pizza_delete = function(req,res){
     res.send('NOT IMPLEMENTED: Pizza delete DELETE ' + req.params.id);
 };
 
-exports.pizza_update_put = function(req, res){
-    res.send('NOT IMPLEMENTED: Pizza update PUT' + req.params.id);
+exports.pizza_update_put = async function(req, res){
+    console.log(`updated on id${req.params.id} with body ${JSON.stringify(req.body)}`);
+    try{
+        let toUpdate = await Pizza.findById(req.params.id)
+        if(req.body.pizza_type)
+            toUpdate.pizza_type = req.body.pizza_type;
+        if(req.body.toppings)
+            toUpdate.toppings = req.body.toppings;
+        if(req.body.price)
+            toUpdate.price = req.body.price;
+        let result = await toUpdate.save();
+        console.log("Success" + result)
+        res.send(result)
+    }catch (err){
+        res.status(500);
+        res.send(`{"error": ${err}: Update for id ${req.params.id} failed`);
+    }
 };
 
 exports.pizza_view_all_Page = async function(req,res){
