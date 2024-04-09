@@ -49,7 +49,7 @@ exports.pizza_delete = async function(req,res){
         res.send(result)
     }catch(err){
         res.status(500)
-        res.send(`{"error": Error deleting ${err}`);
+        res.send(`{"error": Error deleting ${err}}`);
     }
 };
 
@@ -80,5 +80,17 @@ exports.pizza_view_all_Page = async function(req,res){
     catch(err){
         res.status(500);
         res.send(`"error";${err}`);
+    }
+}
+
+exports.pizza_view_one_Page = async function(req, res){
+    console.log("single view for id" + req.query.id)
+    try{
+        result = await Pizza.findById(req.query.id)
+        res.render('pizzadetail', {title:'Pizza Detail',toShow:result});
+    }
+    catch(err){
+        res.status(500)
+        res.send(`{'error': '${err}'}`);
     }
 }

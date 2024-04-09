@@ -6,3 +6,8 @@ body {
 a {
   color: #00B7FF;
 }
+
+.pizzaAttr{
+  background-color: lightcoral;
+  width: 120px;
+}
