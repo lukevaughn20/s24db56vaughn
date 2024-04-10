@@ -81,7 +81,7 @@ exports.pizza_view_all_Page = async function(req,res){
         res.status(500);
         res.send(`"error";${err}`);
     }
-}
+};
 
 exports.pizza_view_one_Page = async function(req, res){
     console.log("single view for id" + req.query.id)
@@ -93,7 +93,7 @@ exports.pizza_view_one_Page = async function(req, res){
         res.status(500)
         res.send(`{'error': '${err}'}`);
     }
-}
+};
 
 exports.pizza_create_Page = function(req, res){
     console.log("create view")
@@ -103,4 +103,15 @@ exports.pizza_create_Page = function(req, res){
         res.status(500)
         res.send(`{'error': '${err}'}`);
     }
-}
+};
+
+exports.costume_update_Page = async function(req, res) {
+    console.log("update view for item" + req.query.id)
+    try{
+        let result = await Pizza.findById(req.query.id)
+        res.render('pizzaupdate', {title: 'Pizza Update',toShow:result});
+    }catch(err){
+        res.status(500)
+        res.send(`{'error': '${err}'}`);
+    }
+};
