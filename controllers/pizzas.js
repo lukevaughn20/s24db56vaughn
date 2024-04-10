@@ -115,3 +115,14 @@ exports.pizza_update_Page = async function(req, res) {
         res.send(`{'error': '${err}'}`);
     }
 };
+
+exports.pizza_delete_Page = async function(req, res){
+console.log("Delete view for id" + req.query.id)
+try{
+    result = await Pizza.findById(req.query.id)
+    res.render('pizzadelete', {title: 'Pizza Delete',toShow:result});
+}catch(err){
+    res.status(500)
+    res.send(`{'error': '${err}'}`);
+}
+};
