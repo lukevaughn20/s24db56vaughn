@@ -1,6 +1,9 @@
 extends layout 
 
 block content 
+    if(toShow == null)
+        h2 No instance to show
+    else
         h1=title 
         - let pizzaid = toShow._id
         - let pizza_type = toShow.pizza_type
