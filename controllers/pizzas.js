@@ -105,7 +105,7 @@ exports.pizza_create_Page = function(req, res){
     }
 };
 
-exports.costume_update_Page = async function(req, res) {
+exports.pizza_update_Page = async function(req, res) {
     console.log("update view for item" + req.query.id)
     try{
         let result = await Pizza.findById(req.query.id)

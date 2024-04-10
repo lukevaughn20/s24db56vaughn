@@ -2,25 +2,29 @@ extends layout
 
 block content
     h1=title
+
     - let pizzaid = toShow._id
     - let pizza_type = toShow.pizza_type
     - let toppings = toShow.toppings
-    - let price = toShow.price
+    - let price   = toShow.price 
+
     div.row(class='mb-2')
         div.mr-1 ID is
         div #{pizzaid}
     - let actionid = "/resource/pizzas/" + pizzaid
+
     form(id='PizzaForm', action= actionid, method="PUT")
         div.form-group
             label.pizzaAttr(for='pizza_type') Pizza type
-            input#pizza_type(type='text', name='pizza_type', value= pizza_type )
+            input#pizza_type(type='text', name='pizza_type' value= pizza_type) 
         div.form-group
             label.pizzaAttr(for='toppings') Toppings
-            input#size(type='text', name='toppings', value= toppings )
+            input#toppings(type='text', name='toppings' value= toppings)
         div.form-group
             label.pizzaAttr(for='price') Price
-            input#cost(type='decimal', name='price', value= price )
+            input#price(type='decimal', name='price' value= price)
         input(type="submit")
+
     script.
         document.forms['PizzaForm'].addEventListener('submit', (event) => {
             event.preventDefault();
