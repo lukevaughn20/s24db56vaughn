@@ -1,21 +1,21 @@
 extends layout 
 
 block content 
-   h1=title 
-   - let pizzaid = toShow._id
-   - let pizza_type = toShow.pizza_type
-   - let toppings = toShow.toppings
-   - let price   = toShow.price 
-   div
-    div.row
-        div(class='pizzaAttr mr-3') Pizza ID is: 
-        div #{pizzaid}
-    div.row
-        div(class='pizzaAttr mr-3') Pizza type is: 
-        div #{pizza_type}
-    div.row
-        div(class='pizzaAttr mr-3') Pizza toppings are: 
-        div #{toppings}
-    div.row
-        div(class='pizzaAttr mr-3') Pizza price is: 
-        div #{price} 
+        h1=title 
+        - let pizzaid = toShow._id
+        - let pizza_type = toShow.pizza_type
+        - let toppings = toShow.toppings
+        - let price   = toShow.price 
+        div
+            div.row
+                div(class='pizzaAttr mr-3') Pizza ID is: 
+                div #{pizzaid}
+            div.row
+                div(class='pizzaAttr mr-3') Pizza type is: 
+                div #{pizza_type}
+            div.row
+                div(class='pizzaAttr mr-3') Pizza toppings are: 
+                div #{toppings}
+            div.row
+                div(class='pizzaAttr mr-3') Pizza price is: 
+                div #{price} 

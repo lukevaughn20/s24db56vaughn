@@ -1,29 +1,32 @@
 extends layout
 
 block content
-    h1=title
 
-    - let pizzaid = toShow._id
-    - let pizza_type = toShow.pizza_type
-    - let toppings = toShow.toppings
-    - let price   = toShow.price 
+    if(toShow == null)
+        h2 No instance to update
+    else
+        h1=title
+        - let pizzaid = toShow._id
+        - let pizza_type = toShow.pizza_type
+        - let toppings = toShow.toppings
+        - let price   = toShow.price 
 
-    div.row(class='mb-2')
-        div.mr-1 ID is
-        div #{pizzaid}
-    - let actionid = "/resource/pizzas/" + pizzaid
+        div.row(class='mb-2')
+            div.mr-1 ID is
+            div #{pizzaid}
+        - let actionid = "/resource/pizzas/" + pizzaid
 
-    form(id='PizzaForm', action= actionid, method="PUT")
-        div.form-group
-            label.pizzaAttr(for='pizza_type') Pizza type
-            input#pizza_type(type='text', name='pizza_type' value= pizza_type) 
-        div.form-group
-            label.pizzaAttr(for='toppings') Toppings
-            input#toppings(type='text', name='toppings' value= toppings)
-        div.form-group
-            label.pizzaAttr(for='price') Price
-            input#price(type='decimal', name='price' value= price)
-        input(type="submit")
+        form(id='PizzaForm', action= actionid, method="PUT")
+            div.form-group
+                label.pizzaAttr(for='pizza_type') Pizza type
+                input#pizza_type(type='text', name='pizza_type' value= pizza_type) 
+            div.form-group
+                label.pizzaAttr(for='toppings') Toppings
+                input#toppings(type='text', name='toppings' value= toppings)
+            div.form-group
+                label.pizzaAttr(for='price') Price
+                input#price(type='decimal', name='price' value= price)
+            input(type="submit")
 
     script.
         document.forms['PizzaForm'].addEventListener('submit', (event) => {

@@ -2,6 +2,29 @@ extends layout
 
 block content 
     h1=title 
+
+    style. 
+        body{
+            background-color: blue; 
+        }
+        h1{
+           font-family: "Times New Roman", Times, serif; 
+        }
+        input{
+            border: 5px solid light green;
+            border-radius: 5px;
+            font-family: "Times New Roman", Times, serif; 
+            font-size: 15px;
+        }
+        label{
+            font-family: "Times New Roman", Times, serif; 
+            font-size: 25px;
+            width: 500px;
+            display: inline-block;
+
+        }
+
+
     
     form(id='PizzaForm', action="/resource/pizzas", method="POST")
         div.form-group
