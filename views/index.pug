@@ -1,19 +1,12 @@
 extends layout
 
 block content
-  h1= title
-  p This is the new change to the index
-  button(type="button", class="btn btn-secondary" onclick="double()") I am a button
-  div(id="double") Up the amount
-  
-  script.
-    value = 0;
-    power = 1;
-    function double(){
-      value = value + 1;
-      power = power * 2;
-      document.getElementById("double").innerHTML = "Two to the power " + value + " is " + power
-    }
-
-  a(href='/pizza') https://s24wb56vaughn.onrender.com/pizza
-
+  if(!user)
+    a(href="/login") Login 
+    br
+    a(href="/register") Register 
+  if(user)
+    p You are currently logged in as #{user.username}\
+    a(href="/pizza") Take me to pizzas
+    br
+    a(href="/logout") Logout
