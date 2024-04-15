@@ -3,12 +3,17 @@ extends layout
 block content
   h1= title
   -let items = results
+  div 
+    button.btn(class="btn-primary m1-1", onclick=`dispatch(\"/pizza/create\")`) Create 
+
   div(class="container-fluid")
     div(class="row m-1")
       each item in items
         - let destination = `dispatch(\"/pizza/update?id=${item._id}\")`
         div(class="row-sm-2", class="m-1") Item #{item.pizza_type}(#{item.toppings}) is #{item.price}
-        button.btn(class="btn-primary m1-1", onclick=destination) Update 
+          button.btn(class="btn-primary m-1", onclick=destination) Update 
+          button.btn(class="btn-primary m-1", onclick=`dispatch(\"/pizza/detail?id=${item._id}\")`) Detail 
+          button.btn(class="btn-primary m-1", onclick=`dispatch(\"/pizza/delete?id=${item._id}\")`) Delete  
 
 
   script. 
